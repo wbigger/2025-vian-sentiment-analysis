@@ -1,120 +1,191 @@
 <!-- Index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="it">
 
 <head>
-  <base target="_top">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
+    <title>VIAN Sentiment Analysis</title>
+    <base target="_top">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .progress-container {
-      width: 80%;
-      max-width: 600px;
-      margin: 20px 0;
-    }
+        .progress-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
 
-    .progress-bar {
-      width: 100%;
-      height: 30px;
-      background-color: #f0f0f0;
-      border-radius: 15px;
-      overflow: hidden;
-    }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
 
-    .progress-fill {
-      height: 100%;
-      background-color: #4CAF50;
-      transition: width 0.5s ease-in-out;
-    }
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.5s ease-in-out;
+        }
 
-    .progress-text {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 18px;
-    }
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
 
-    .refresh-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .refresh-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-    .refresh-button:hover {
-      background-color: #1976D2;
-    }
-  </style>
+        .refresh-button:hover {
+            background-color: #1976D2;
+        }
+
+        .survey-section {
+            width: 80%;
+            max-width: 800px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .survey-button {
+            display: flex;
+            flex-direction: column;
+            width: 280px;
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s;
+        }
+
+        .survey-button:hover {
+            transform: translateY(-5px);
+        }
+
+        .quick {
+            background-color: #FF9800;
+        }
+
+        .complete {
+            background-color: #4CAF50;
+        }
+
+        .button-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .button-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <img src="logo-placeholder.png" alt="Logo della scuola" style="height: 100px;">
-        <h1>Liceo VIAN Bracciano</h2>
+        <div style="display: flex; align-items: center;">
+            <img src="logo.webp" alt="Logo della scuola" style="height: 100px; margin-right: 20px;">
+            <h1>Liceo VIAN Bracciano</h1>
+        </div>
     </header>
-  <h2>Stato Sondaggio</h1>
-  <div class="progress-container">
-    <div class="progress-bar">
-      <div id="progressFill" class="progress-fill"></div>
+    <h2>Stato Sondaggio</h2>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="progressText" class="progress-text"></div>
     </div>
-    <div id="progressText" class="progress-text"></div>
-  </div>
-  <button class="refresh-button" onclick="updateProgress()">Aggiorna</button>
+    <button class="refresh-button" onclick="updateProgress()">Aggiorna</button>
 
-  <!-- Sezione Studenti -->
-  <div>
-  <div>
-    <h3>Studenti</h3>
-    <a href="#">
-      Compila il questionario
-    </a>
-  </div>
+    <!-- Sezione Studenti -->
+    <div class="survey-section">
+        <h2>Solo studenti</h2>
+        <p>Scegli il tipo di sondaggio che preferisci completare:</p>
+        <div class="button-container">
+            <a href="redirectToRandomSurveyQuickStudent(event)" class="survey-button quick">
+                <span class="button-title">Sondaggio Veloce</span>
+                <span class="button-description">1-2 minuti • Per un aiuto veloce</span>
+            </a>
+            <a href="LINK_SONDAGGIO_COMPLETO" class="survey-button complete">
+                <span class="button-title">Sondaggio Completo</span>
+                <span class="button-description">3-5 minuti • Per un maggiore contributo</span>
+            </a>
+        </div>
+    </div>
+    <h2>Per tutti</h2>
+    <p>Scegli il tipo di sondaggio che preferisci completare:</p>
+    <div class="button-container">
+        <a href="LINK_SONDAGGIO_VELOCE" class="survey-button quick">
+            <span class="button-title">Sondaggio Veloce</span>
+            <span class="button-description">1-2 minuti • Per un aiuto veloce</span>
+        </a>
+        <a href="LINK_SONDAGGIO_COMPLETO" class="survey-button complete">
+            <span class="button-title">Sondaggio Completo</span>
+            <span class="button-description">3-5 minuti • Per un maggiore contributo</span>
+        </a>
+    </div>
 
-  <!-- Sezione per tutti -->
-  <div style="width:100%">
-    <h3>Per tutti</h3>
-    <p><a href="#">
-      Compila il questionario veloce
-    </a>
-    </p>
-    <p><a href="#">
-      Compila il questionario completo (ed ottieni il badge!)
-    </a>
-    </p>
-  </div>
-  <div>
 
+    <script>
+        function updateProgress() {
+            console.log(`updateProgress()`);
+            try {
+                google.script.run
+                    .withSuccessHandler(updateProgressBar)
+                    .getFormResponses();
+            } catch {
+                console.log(`cannot update script...`);
+                updateProgressBar(0);
+                alert("Problema con il calcolo delle risposte.")
+            }
+        }
 
+        function updateProgressBar(responses) {
+            const target = 1000;
+            console.log(`targer: ${target}`);
+            const percentage = Math.min((responses / target) * 100, 100);
 
-  <script>
-    function updateProgress() {
-        google.script.run
-          .withSuccessHandler(updateProgressBar)
-          .getFormResponses();
-      }
-      
-      function updateProgressBar(responses) {
-        const target = 1000;
-        console.log("CIAO");
-        console.log(target);
-        const percentage = Math.min((responses / target) * 100, 100);
-        
-        document.getElementById('progressFill').style.width = percentage + '%';
-        document.getElementById('progressText').innerHTML = 
-          `${responses} risposte su ${target} (${percentage.toFixed(1)}%)`;
-      }
-      
-      // Aggiorna al caricamento della pagina
-      window.onload = updateProgress;
-  </script>
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').innerHTML =
+                `${responses} risposte su ${target} (${percentage.toFixed(1)}%)`;
+        }
+        // Aggiorna al caricamento della pagina
+        function redirectToRandomSurveyQuickStudent(event) {
+            consol.log("Redirecting to survey...");
+            event.preventDefault();
+            google.script.run
+                .withSuccessHandler(function (url) {
+                    window.location.href = url;
+                })
+                .getRandomStudentQuickSurvey();
+        }
+        // Aggiorna al caricamento della pagina
+        window.onload = updateProgress;
+    </script>
 </body>
 
 </html>
